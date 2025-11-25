@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Philipus" %></title>
+    <title><%= content_for(:title) || "Tienda Online" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Philipus">
@@ -17,13 +17,23 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
+    <%# Quick Tailwind for development: uses CDN so you can test styles immediately. Remove
+        or replace with proper tailwind build for production. %>
+    <% if Rails.env.development? %>
+      <script src="https://cdn.tailwindcss.com"></script>
+    <% end %>
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="flex flex-col bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="text-center p-6 bg-white rounded-lg shadow-md">
+        <h3>navbar or header could go here</h3>
+    </div>
     <%= yield %>
+    <footer>
+    footer could go here
+
   </body>
 </html>
