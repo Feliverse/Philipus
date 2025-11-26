@@ -1,0 +1,7 @@
+/*
+  Compatibility shim: Propshaft / layout expects an asset named `tailwind.css`.
+  This file simply imports the Tailwind entrypoint we created earlier so the
+  precompiled asset `tailwind-<hash>.css` exists and can be resolved at runtime.
+*/
+
+@import "application.tailwind.css";
