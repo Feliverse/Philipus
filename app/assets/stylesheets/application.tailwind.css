@@ -1,0 +1,12 @@
+/*
+  Tailwind entrypoint for tailwindcss-rails
+  This file is required by the tailwind build step during assets:precompile.
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import any additional app-level styles (optional). application.css is currently empty,
+   but keeping this import helps if you later add non-tailwind rules there. */
+@import "application.css";
