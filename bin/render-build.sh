@@ -8,4 +8,13 @@ bundle install
 bin/rails assets:precompile
 bin/rails assets:clean
 
-bin/rails db:migrate
+# Only run migrations during build if a database URL is configured.
+# In hosted build environments (like Render) there's often no DB available
+# during the build step; running migrations there will fail. We check for
+# DATABASE_URL and skip migrations if it's not set.
+if [ -n "$DATABASE_URL" ]; then
+	echo "DATABASE_URL detected — running db:migrate"
+	bin/rails db:migrate
+else
+	echo "DATABASE_URL not set — skipping db:migrate during build"
+fi
